@@ -4,7 +4,7 @@ object Form2: TForm2
   Caption = 'Form2'
   ClientHeight = 256
   ClientWidth = 692
-  Color = clBtnFace
+  Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -114,7 +114,7 @@ object Form2: TForm2
     ParentFont = False
   end
   object Label9: TLabel
-    Left = 270
+    Left = 262
     Top = 10
     Width = 183
     Height = 16
@@ -127,9 +127,9 @@ object Form2: TForm2
     ParentFont = False
   end
   object Label10: TLabel
-    Left = 296
-    Top = 200
-    Width = 217
+    Left = 276
+    Top = 170
+    Width = 4
     Height = 16
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -139,8 +139,8 @@ object Form2: TForm2
     ParentFont = False
   end
   object Button1: TButton
-    Left = 553
-    Top = 69
+    Left = 562
+    Top = 170
     Width = 109
     Height = 33
     Caption = #1053#1072#1095#1072#1090#1100' '#1087#1086#1080#1089#1082
@@ -148,8 +148,8 @@ object Form2: TForm2
     OnClick = Button1Click
   end
   object VirtualStringTree1: TVirtualStringTree
-    Left = 270
-    Top = 54
+    Left = 262
+    Top = 32
     Width = 259
     Height = 132
     BorderWidth = 1
@@ -164,26 +164,64 @@ object Form2: TForm2
     Columns = <
       item
         Position = 0
-        Text = 'ClusterNumber'
-        Width = 108
+        Text = #1053#1086#1084#1077#1088' '#1082#1083#1072#1089#1090#1077#1088#1072
+        Width = 94
       end
       item
         Position = 1
-        Text = 'Signatura'
-        Width = 115
+        Text = #1056#1072#1089#1096#1080#1088#1077#1085#1080#1077' '#1092#1072#1081#1083#1072
+        Width = 153
       end>
   end
-  object Edit1: TEdit
-    Left = 459
-    Top = 7
-    Width = 182
-    Height = 24
+  object GroupBox1: TGroupBox
+    Left = 537
+    Top = 32
+    Width = 147
+    Height = 121
+    Caption = #1042#1080#1076#1099' '#1092#1072#1081#1083#1086#1074
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -13
+    Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    ParentBackground = False
+    ParentColor = False
     ParentFont = False
     TabOrder = 2
+    object RadioButton1: TRadioButton
+      Left = 25
+      Top = 25
+      Width = 113
+      Height = 17
+      Caption = #1048#1079#1086#1073#1088#1072#1078#1077#1085#1080#1103
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+    end
+    object RadioButton2: TRadioButton
+      Left = 25
+      Top = 48
+      Width = 113
+      Height = 17
+      Caption = #1040#1091#1076#1080#1086
+      TabOrder = 1
+    end
+    object RadioButton3: TRadioButton
+      Left = 25
+      Top = 71
+      Width = 113
+      Height = 17
+      Caption = #1042#1080#1076#1077#1086
+      TabOrder = 2
+    end
+    object RadioButton4: TRadioButton
+      Left = 25
+      Top = 94
+      Width = 113
+      Height = 17
+      Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      TabOrder = 3
+    end
   end
 end

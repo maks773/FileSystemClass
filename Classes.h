@@ -55,16 +55,22 @@ class FileSystemClass
 	UINT16  Cluster_size;
 	ULONGLONG Sectors_count_r;
 	ULONGLONG Clusters_count_r;
+	UINT16 First_cluster;
 	double fs_size;
+	std::string fs_type;
   public:
-    UINT16 GetClusterSize();
+    ULONGLONG SkipSectors;
+	UINT16 GetClusterSize();
 	ULONGLONG GetClustersCount();
 	double GetFileSystemSize();
+	UINT16 GetSectorSize();
+	UINT16 GetFirstClusterNumber();
+	std::string GetFileSystemType();
 	FileSystemClass* CreateFS(FS_type, BYTE *); //фабричный метод
 	BYTE* ReadCluster(HANDLE, BYTE *);
 	void PrintClusterToFile(FILE *, BYTE *, ULONGLONG);
 	virtual ULONGLONG GetFirstFileRecordCluster() = 0;
-	BYTE* FindSignatureInCluster(BYTE *, BYTE *);
+	BYTE* FindSignatureInCluster(BYTE *, BYTE *, bool);
 };
 
 
@@ -87,3 +93,40 @@ class FAT32_FileSystemClass : public FileSystemClass
 	FAT32_FileSystemClass(BYTE *);
 	ULONGLONG GetFirstFileRecordCluster();
 };
+
+template <class Item>
+class Iterator
+{
+   public:
+	 virtual void First() = 0;
+	 virtual void Next() = 0;
+	 virtual bool IsDone() = 0;
+	 virtual Item CurrentItem() = 0;
+};
+
+class ClustersIterator : public Iterator<BYTE*>
+{
+   public:
+	 ClustersIterator(FileSystemClass* _FS);
+	 ~ClustersIterator();
+	 void First();
+	 void Next();
+	 bool IsDone();
+	 BYTE* CurrentItem();
+	 ULONGLONG GetCurrentNum();
+  protected:
+	 ULONGLONG current;
+	 BYTE *cluster;
+	 FileSystemClass *FS;
+	 HANDLE hDisk;
+	 std::string fs_type;
+};
+
+class ClustersDecorator: public ClustersIterator
+{
+  public:
+	 ClustersDecorator(ClustersIterator *_It);
+	 void Next();
+};
+
+
